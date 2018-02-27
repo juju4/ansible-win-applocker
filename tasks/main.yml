@@ -1,0 +1,7 @@
+---
+
+- include_tasks: windows-whitelist.yml
+  when: win_applocker_enable
+
+- include_tasks: testing-applocker.yml
+  when: win_testing_applocker

@@ -11,9 +11,19 @@ win_applocker_mode_script: "AuditOnly"
 win_applocker_mode_msi: "AuditOnly"
 win_applocker_mode_appx: "AuditOnly"
 win_applocker_mode_dll: "AuditOnly"
-#win_testing_applocker_filepath: []
 
 # AppID service can only be started with a GPO, if standalone, using a scheduled task
 win_insidedomain: false
 
 win_testing_applocker: false
+#win_testing_applocker_filepath: []
+win_testing_applocker_dirpath:
+    - "C:\\Users"
+    - "C:\\Program Files"
+    - "C:\\Program Files (x86)"
+    - "C:\\ProgramData"
+    - "C:\\Windows"
+    - "C:\\PerfLogs"
+    - "C:\\opscode"
+    - "C:\\tmp"
+    - "{{ win_temp_dir }}"

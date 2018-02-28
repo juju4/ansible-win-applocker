@@ -6,18 +6,14 @@
   register: testal_results
 - debug: var=testal_results
 
+- name: Ensure sysinternals tools are present with chocolatey
+  win_chocolatey:
+    name: sysinternals
+    state: present
+
 - name: Check directories permissions for world-writeable paths
   win_shell: "C:\\ProgramData\\chocolatey\\lib\\sysinternals\\tools\\accesschk.exe -w Users \"{{ item }}\""
-  with_items:
-    - "C:\\Users"
-    - "C:\\Program Files"
-    - "C:\\Program Files (x86)"
-    - "C:\\ProgramData"
-    - "C:\\Windows"
-    - "C:\\PerfLogs"
-    - "C:\\opscode"
-    - "C:\\tmp"
-    - "{{ win_temp_dir }}"
+  with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
   register: wpath_results
   ignore_errors: true
 - debug: var=wpath_results

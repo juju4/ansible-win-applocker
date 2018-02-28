@@ -2,5 +2,7 @@
 
 - hosts: all
   become_method: runas
+  vars:
+    - win_testing_applocker: true
   roles:
     - juju4.win-applocker

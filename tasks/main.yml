@@ -1,5 +1,13 @@
 ---
 
+- name: Ensure ansible directories exist
+  win_file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ win_temp_dir }}"
+    - "{{ win_log_dir }}"
+
 - include_tasks: windows-whitelist.yml
   when: win_applocker_enable
 

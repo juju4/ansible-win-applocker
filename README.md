@@ -1,8 +1,8 @@
 [![Build Status - Master](https://travis-ci.org/juju4/ansible-win-applocker.svg?branch=master)](https://travis-ci.org/juju4/ansible-win-applocker)
 [![Build Status - Devel](https://travis-ci.org/juju4/ansible-win-applocker.svg?branch=devel)](https://travis-ci.org/juju4/ansible-win-applocker/branches)(Syntax Only)
 
-[![Appveyor - Master](https://ci.appveyor.com/api/projects/status/xxx?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-applocker)
-![Appveyor - Devel](https://ci.appveyor.com/api/projects/status/xxx/branch/devel?svg=true)
+[![Appveyor - Master](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-applocker)
+![Appveyor - Devel](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/devel?svg=true)
 
 # Windows AppLocker ansible role
 

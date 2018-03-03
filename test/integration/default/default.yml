@@ -15,5 +15,6 @@
 #        - "C:\\opscode"
 #        - "C:\\tmp"
 #        - "{{ win_temp_dir }}"
+    - win_testing_applocker_bypasschecker: false
   roles:
     - juju4.win-applocker

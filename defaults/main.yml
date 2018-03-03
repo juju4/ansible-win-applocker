@@ -27,3 +27,4 @@ win_testing_applocker_dirpath:
     - "C:\\opscode"
     - "C:\\tmp"
     - "{{ win_temp_dir }}"
+win_testing_applocker_bypasschecker: true

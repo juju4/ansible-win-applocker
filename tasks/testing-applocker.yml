@@ -42,13 +42,15 @@
     dest: "{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1"
 
 ## FIXME! ProgramData dir is user writeable! opscode\inspec
-- name: AppLockerBypassChecker-v1 for user?
-  win_shell: "Powershell -Exec Bypass -File \"{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1\" \"{{ item }}\""
-  become: yes
-  become_user: _test
-  with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
-  register: bypass_results
-- debug: var=bypass_results
+- block:
+    - name: AppLockerBypassChecker-v1 for user?
+      win_shell: "Powershell -Exec Bypass -File \"{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1\" \"{{ item }}\""
+      become: yes
+      become_user: _test
+      with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
+      register: bypass_results
+    - debug: var=bypass_results
+  when: win_testing_applocker_bypasschecker
 
 # https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/
 #- name: install teamviewer for some testing

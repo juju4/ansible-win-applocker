@@ -46,12 +46,7 @@
   win_shell: "Powershell -Exec Bypass -File \"{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1\" \"{{ item }}\""
   become: yes
   become_user: _test
-  with_items:
-    - "C:\\Users"
-    - "C:\\Program Files"
-    - "C:\\Program Files (x86)"
-    - "C:\\ProgramData"
-    - "C:\\Windows"
+  with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
   register: bypass_results
 - debug: var=bypass_results
 

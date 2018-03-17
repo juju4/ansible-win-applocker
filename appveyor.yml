@@ -23,6 +23,7 @@ environment:
 #    CYG_BASH: C:\cygwin64\bin\sh
 #    ANSIBLE_VERSION: 2.3.3.0
 #    ANSIBLE_EXTRA_VARS:
+#    SUITE: default
   - TARGET: cygwin64
     CYG_ROOT: C:\cygwin64
     CYG_SETUP: C:\cygwin64\setup-x86_64.exe
@@ -30,6 +31,7 @@ environment:
     CYG_BASH: C:\cygwin64\bin\sh
     ANSIBLE_VERSION: 2.4.3.0
     ANSIBLE_EXTRA_VARS:
+    SUITE: default
   - TARGET: cygwin64
     CYG_ROOT: C:\cygwin64
     CYG_SETUP: C:\cygwin64\setup-x86_64.exe
@@ -37,6 +39,15 @@ environment:
     CYG_BASH: C:\cygwin64\bin\sh
     ANSIBLE_VERSION: 2.5.0b2
     ANSIBLE_EXTRA_VARS:
+    SUITE: default
+  - TARGET: cygwin64
+    CYG_ROOT: C:\cygwin64
+    CYG_SETUP: C:\cygwin64\setup-x86_64.exe
+    CYG_CACHE: C:\cygwin64\var\cache\setup
+    CYG_BASH: C:\cygwin64\bin\sh
+    ANSIBLE_VERSION: 2.5.0b2
+    ANSIBLE_EXTRA_VARS:
+    SUITE: default-enforced
 matrix:
   fast_finish: true
 
@@ -81,12 +92,12 @@ install:
 
 build: off
 test_script:
-- cmd: "%CYG_BASH% -lc 'ansible-playbook /cygdrive/c/projects/ansible-win-applocker/test/integration/default/default.yml --syntax-check'"
-- cmd: "%CYG_BASH% -lc 'ansible-playbook -i /cygdrive/c/projects/ansible-win-applocker/test/appveyor/inventory /cygdrive/c/projects/ansible-win-applocker/test/integration/default/default.yml -vvv $ANSIBLE_EXTRA_VARS'"
+- cmd: "%CYG_BASH% -lc 'ansible-playbook /cygdrive/c/projects/ansible-win-applocker/test/integration/$SUITE/default.yml --syntax-check'"
+- cmd: "%CYG_BASH% -lc 'ansible-playbook -i /cygdrive/c/projects/ansible-win-applocker/test/appveyor/inventory /cygdrive/c/projects/ansible-win-applocker/test/integration/$SUITE/default.yml -vvv $ANSIBLE_EXTRA_VARS'"
 
 after_test:
 - cmd: |
-    %CYG_BASH% -lc 'ansible-playbook -i /cygdrive/c/projects/ansible-win-applocker/test/appveyor/inventory /cygdrive/c/projects/ansible-win-applocker/test/integration/default/default.yml $ANSIBLE_EXTRA_VARS'
+    %CYG_BASH% -lc 'ansible-playbook -i /cygdrive/c/projects/ansible-win-applocker/test/appveyor/inventory /cygdrive/c/projects/ansible-win-applocker/test/integration/$SUITE/default.yml $ANSIBLE_EXTRA_VARS'
 - ps: Get-AppLockerPolicy -Local
 - ps: Get-AppLockerPolicy -Effective -Xml
 - ps: $ExecutionContext.SessionState.LanguageMode

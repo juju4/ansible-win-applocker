@@ -433,6 +433,23 @@
         </FilePublisherCondition>
       </Conditions>
     </FilePublisherRule>
+{% for item in win_applocker_exe_rules_path %}
+    <FilePathRule Id="{{ item.Name | to_uuid() }}" Name="{{ item.Name }}" Description="{{ item.Description }}" UserOrGroupSid="{{ item.UserGroup }}" Action="{{ item.Action }}">
+      <Conditions>
+        <FilePathCondition Path="{{ item.Path }}" />
+      </Conditions>
+    </FilePathRule>
+{% endfor %}
+{% for item in win_applocker_exe_rules_certificate %}
+    <FilePublisherRule Id="{{ item.Name | to_uuid() }}" Name="{{ item.Name }}" Description="{{ item.Description }}" UserOrGroupSid="{{ item.UserGroup }}" Action="{{ item.Action }}">
+      <Conditions>
+        <FilePublisherCondition PublisherName="{{ item.PublisherName }}" ProductName="{{ item.ProductName }}" BinaryName="{{ item.BinaryName }}">
+          <BinaryVersionRange LowSection="{{ item.LowSection }}" HighSection="{{ item.HighSection }}" />
+        </FilePublisherCondition>
+      </Conditions>
+    </FilePublisherRule>
+{% endfor %}
+{% for item in win_applocker_exe_rules_hash %}
   </RuleCollection>
   <RuleCollection Type="Msi" EnforcementMode="{{ win_applocker_mode_msi }}">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Allow everyone to run all Windows Installer files located in the Windows\Installer folder." Description="Allows members of the Everyone group to run all Windows Installer files located in %systemdrive%\Windows\Installer." UserOrGroupSid="S-1-1-0" Action="Allow">

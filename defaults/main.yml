@@ -12,6 +12,15 @@ win_applocker_mode_msi: "AuditOnly"
 win_applocker_mode_appx: "AuditOnly"
 win_applocker_mode_dll: "AuditOnly"
 
+win_applocker_exe_rules_path:
+  - Name: Allow Appveyor python
+    Description: Appveyor/Cygwin python path for CI/CD integration
+    UserGroup: S-1-1-0
+    Action: Allow
+    Path: '%OSDRIVE%\CYGWIN64\BIN\PYTHON3.6M.EXE'
+win_applocker_exe_rules_certificate: []
+win_applocker_exe_rules_hash: []
+
 # AppID service can only be started with a GPO, if standalone, using a scheduled task
 win_insidedomain: false
 

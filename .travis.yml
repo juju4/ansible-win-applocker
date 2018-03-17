@@ -17,3 +17,6 @@ script:
 
 # Check the role/playbook's syntax.
   - "ansible-playbook -i inventory --syntax-check test/integration/default/default.yml"
+
+# Applocker templates
+  - "for f in templates/applocker-*.xml.j2; do echo \"== $f\"; xmllint $f > /dev/null; done"

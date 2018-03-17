@@ -450,6 +450,7 @@
     </FilePublisherRule>
 {% endfor %}
 {% for item in win_applocker_exe_rules_hash %}
+{% endfor %}
   </RuleCollection>
   <RuleCollection Type="Msi" EnforcementMode="{{ win_applocker_mode_msi }}">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Allow everyone to run all Windows Installer files located in the Windows\Installer folder." Description="Allows members of the Everyone group to run all Windows Installer files located in %systemdrive%\Windows\Installer." UserOrGroupSid="S-1-1-0" Action="Allow">

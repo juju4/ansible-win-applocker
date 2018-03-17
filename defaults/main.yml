@@ -18,6 +18,11 @@ win_applocker_exe_rules_path:
     UserGroup: S-1-1-0
     Action: Allow
     Path: '%OSDRIVE%\CYGWIN64\BIN\PYTHON3.6M.EXE'
+  - Name: Deny runas access
+    Description: https://blogs.technet.microsoft.com/jepayne/2016/04/04/when-the-manual-is-not-enough-runas-netonly-unexpected-credential-exposure-and-the-need-for-reality-based-holistic-threat-models/
+    UserGroup: S-1-1-0
+    Action: Deny
+    Path: '%SYSTEM32%\runas.exe'
 win_applocker_exe_rules_certificate: []
 win_applocker_exe_rules_hash: []
 

@@ -42,3 +42,4 @@ win_testing_applocker_dirpath:
     - "C:\\tmp"
     - "{{ win_temp_dir }}"
 win_testing_applocker_bypasschecker: true
+ansible_become_password: "_Password_CI_CD_to_be_revoked1_"

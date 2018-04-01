@@ -212,6 +212,11 @@
         <FilePathCondition Path="%OSDRIVE%\ProgramData\osquery\osqueryd\*" />
       </Conditions>
     </FilePathRule>
+    <FilePathRule Id="2fac835b-5a40-479f-be8a-451571a1ed13" Name="Allow osqueryi" Description="interactive use or configuration validation" UserOrGroupSid="S-1-1-0" Action="Allow">
+      <Conditions>
+        <FilePathCondition Path="%OSDRIVE%\ProgramData\osquery\osqueryi.exe" />
+      </Conditions>
+    </FilePathRule>
     <FilePublisherRule Id="c2e3d63a-0327-4c07-94da-06da2f819078" Name="Block Microsoft Windows Troubleshooting packs (MSDT.EXE)" Description="subTee bypass" UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePublisherCondition PublisherName="O=MICROSOFT CORPORATION, L=REDMOND, S=WASHINGTON, C=US" ProductName="MICROSOFT® WINDOWS® OPERATING SYSTEM" BinaryName="MSDT.EXE">

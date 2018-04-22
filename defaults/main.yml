@@ -5,12 +5,18 @@ win_log_dir: 'c:\ProgramData\ansible\log'
 
 win_applocker_enable: true
 win_applocker_policy: "applocker-basic.xml"
+# https://docs.microsoft.com/en-us/windows/security/threat-protection/applocker/understand-applocker-enforcement-settings
+# Not configured:   By default, enforcement is not configured in a rule collection. If rules are present in the corresponding rule collection, they are enforced. If rule enforcement is configured in a higher-level linked Group Policy object (GPO), that enforcement value overrides the Not configured value.
+# Enforce rules:    Rules are enforced for the rule collection, and all rule events are audited.
+# Audit only:       Rule events are audited only. Use this value when planning and testing AppLocker rules.
 win_applocker_mode_exe: "AuditOnly"
-#win_applocker_mode_exe: "Enabled"
-win_applocker_mode_script: "AuditOnly"
+win_applocker_mode_script: "NotConfigured"
+#win_applocker_mode_script: "AuditOnly"
 win_applocker_mode_msi: "AuditOnly"
 win_applocker_mode_appx: "AuditOnly"
 win_applocker_mode_dll: "AuditOnly"
+#win_applocker_policy: "applocker-medium.xml"
+#win_applocker_mode_exe: "Enabled"
 
 win_applocker_exe_rules_path:
   - Name: Allow Appveyor python

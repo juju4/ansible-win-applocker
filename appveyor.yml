@@ -109,6 +109,7 @@ after_test:
 - ps: Get-AppLockerPolicy -Local
 - ps: Get-AppLockerPolicy -Effective -Xml
 - ps: $ExecutionContext.SessionState.LanguageMode
+- cmd: cinst -y notepadplusplus
 - ps: |
     Get-WinEvent -LogName 'Microsoft-Windows-AppLocker/EXE and DLL' | Where { $_.ID -eq 8004 }
     True

@@ -8,6 +8,20 @@
     - "{{ win_temp_dir }}"
     - "{{ win_log_dir }}"
 
+- name: Restrict permissions for ansible directories
+  win_acl:
+    path: "{{ item.p }}"
+    user: "{{ item.u }}"
+    rights: "{{ item.r }}"
+    type: "{{ item.t }}"
+    state: "{{ item.s }}"
+    inherit: "{{ item.i }}"
+    propagation: "{{ item.pr }}"
+  with_items:
+    - { p: "{{ win_temp_dir }}", u: 'BUILTIN\Users', r: 'ReadAndExecute,Write', t: allow, s: absent, i: 'ContainerInherit, ObjectInherit', pr: 'None' }
+    - { p: "{{ win_log_dir }}", u: 'BUILTIN\Users', r: 'ReadAndExecute,Write', t: allow, s: absent, i: 'ContainerInherit, ObjectInherit', pr: 'None' }
+
+
 - include_tasks: windows-whitelist.yml
   when: win_applocker_enable
 

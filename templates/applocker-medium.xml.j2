@@ -433,6 +433,13 @@
         <FilePathCondition Path="%OSDRIVE%\opscode\inspec\*" />
       </Conditions>
     </FilePathRule>
+    <FilePublisherRule Id="d255ee68-8db2-4698-9707-f59d3bf42396" Name="Allow Microsoft Onedrive (FILESYNCCONFIG.EXE)" Description="from user AppData folder" UserOrGroupSid="S-1-1-0" Action="Allow">
+      <Conditions>
+        <FilePublisherCondition PublisherName="O=MICROSOFT CORPORATION, L=REDMOND, S=WASHINGTON, C=US" ProductName="MICROSOFT ONEDRIVE" BinaryName="FILESYNCCONFIG.EXE">
+          <BinaryVersionRange LowSection="17.3.0.0" HighSection="*" />
+        </FilePublisherCondition>
+      </Conditions>
+    </FilePublisherRule>
     <FilePublisherRule Id="0753c63b-eb80-42ed-894b-5c64a164bf7c" Name="Allow Intel Vulnerability assessment (INTEL-SA-00086-CONSOLE.EXE)" Description="Intel ME vulnerability" UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
         <FilePublisherCondition PublisherName="O=INTEL CORPORATION, L=SANTA CLARA, S=CA, C=US" ProductName="INTEL-SA-00086-CLI" BinaryName="INTEL-SA-00086-CONSOLE.EXE">

@@ -280,6 +280,13 @@
         </FilePublisherCondition>
       </Conditions>
     </FilePublisherRule>
+    <FilePublisherRule Id="0753c63b-eb80-42ed-894b-5c64a164bf7c" Name="Allow Intel Vulnerability assessment (INTEL-SA-00086-CONSOLE.EXE)" Description="Intel ME vulnerability" UserOrGroupSid="S-1-5-32-544" Action="Allow">
+      <Conditions>
+        <FilePublisherCondition PublisherName="O=INTEL CORPORATION, L=SANTA CLARA, S=CA, C=US" ProductName="INTEL-SA-00086-CLI" BinaryName="INTEL-SA-00086-CONSOLE.EXE">
+          <BinaryVersionRange LowSection="*" HighSection="*" />
+        </FilePublisherCondition>
+      </Conditions>
+    </FilePublisherRule>
 {% for item in win_applocker_exe_rules_path %}
     <FilePathRule Id="{{ item.Name | to_uuid() }}" Name="{{ item.Name }}" Description="{{ item.Description }}" UserOrGroupSid="{{ item.UserGroup }}" Action="{{ item.Action }}">
       <Conditions>

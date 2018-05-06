@@ -271,7 +271,7 @@
     </FilePathRule>
     <FilePathRule Id="2cd280a4-1d0c-4f82-9f67-752b1778b7ad" Name="Allow Ansible temp folder execution" Description="Should be restricted to one user and only for play duration" UserOrGroupSid="S-1-5-32-544" Action="{{ win_applocker_ansible_tempdir_action | default('Allow') }}">
       <Conditions>
-        <FilePathCondition Path="%OSDRIVE%\{{ win_temp_dir | regex_replace('c:\', '') }}\*" />
+        <FilePathCondition Path="%OSDRIVE%\{{ win_temp_dir | regex_replace('c:\\', '') }}\*" />
       </Conditions>
     </FilePathRule>
     <FilePathRule Id="c151e209-bc47-4029-b8ba-2131ea645e68" Name="%OSDRIVE%\temp\*" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">

@@ -55,6 +55,8 @@ $ ansible -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -
 
 ## Troubleshooting & Known issues
 
+* Trying to track [LOLBAS](https://github.com/api0cradle/LOLBAS) but remember to test in your environment!
+
 ## FAQ
 
 ## License

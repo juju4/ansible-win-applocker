@@ -60,6 +60,10 @@
 #  win_shell: >
 #    wmic process call create '"C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"'
 
+# https://github.com/strictlymike/Invoke-SchmappLocker/blob/master/Invoke-SchmappLocker.ps1
+# https://blog.didierstevens.com/2011/01/25/circumventing-srp-and-applocker-to-create-a-new-process-by-design/
+
+
 - name: Check log for blocked apps
   win_shell: Get-WinEvent -LogName 'Microsoft-Windows-AppLocker/EXE and DLL' | Where { $_.ID -eq 8004 }
   register: winevt

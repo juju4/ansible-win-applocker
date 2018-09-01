@@ -113,6 +113,8 @@ after_test:
 - ps: |
     Get-WinEvent -LogName 'Microsoft-Windows-AppLocker/EXE and DLL' | Where { $_.ID -eq 8004 }
     True
+
+on_failure:
 # Enumerating lolbin candidates, https://twitter.com/VTeissler/status/1023433939321409536
 - ps: |
     Get-ChildItem C:\ -recurse -file |ForEach-Object {if($_ -match '.+?exe$') {Get-AuthenticodeSignature $_.fullname}} | where {$_.IsOSBinary} |ForEach-Object { write-host $_.path }

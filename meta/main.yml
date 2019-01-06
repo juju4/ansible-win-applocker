@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: win_applocker
   author: juju4
   description: setup Applocker on Windows system
   license: BSD

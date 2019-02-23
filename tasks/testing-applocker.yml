@@ -55,7 +55,8 @@
 # FIXME! out-file: The given's path format is not supported
 #- name: try to push bginfo in teamviewer logfile alternate data stream
 #  win_shell: >
-#    type c:\\ProgramData\\chocolatey\\bin\\bginfo.exe > "C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"
+#    type c:\\ProgramData\\chocolatey\\bin\\bginfo.exe
+#      > "C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"
 #- name: try to execute
 #  win_shell: >
 #    wmic process call create '"C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"'

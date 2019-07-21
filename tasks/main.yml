@@ -36,7 +36,7 @@
       }
 
 - include_tasks: windows-whitelist.yml
-  when: win_applocker_enable
+  when: win_applocker_enable|bool
 
 - include_tasks: testing-applocker.yml
-  when: win_testing_applocker
+  when: win_testing_applocker|bool

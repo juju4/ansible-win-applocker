@@ -15,7 +15,8 @@
   win_shell: Get-AppLockerPolicy -Local -Xml
   register: policy
   changed_when: false
-- debug: var=policy.stdout_lines
+- name: Debug | policy
+  debug: var=policy.stdout_lines
 
 - name: Non-domain | check if scheduled task to start AppIdSvc
   win_shell: schtasks /query /tn "AppIdSvc-start"

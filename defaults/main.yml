@@ -11,12 +11,12 @@ win_applocker_policy: "applocker-basic.xml"
 # Audit only:       Rule events are audited only. Use this value when planning and testing AppLocker rules.
 win_applocker_mode_exe: "AuditOnly"
 win_applocker_mode_script: "NotConfigured"
-#win_applocker_mode_script: "AuditOnly"
+# win_applocker_mode_script: "AuditOnly"
 win_applocker_mode_msi: "AuditOnly"
 win_applocker_mode_appx: "AuditOnly"
 win_applocker_mode_dll: "AuditOnly"
-#win_applocker_policy: "applocker-medium.xml"
-#win_applocker_mode_exe: "Enabled"
+# win_applocker_policy: "applocker-medium.xml"
+# win_applocker_mode_exe: "Enabled"
 
 win_applocker_exe_rules_path:
   - Name: Allow Appveyor python
@@ -36,16 +36,16 @@ win_applocker_exe_rules_hash: []
 win_insidedomain: false
 
 win_testing_applocker: false
-#win_testing_applocker_filepath: []
+# win_testing_applocker_filepath: []
 win_testing_applocker_dirpath:
-    - "C:\\Users"
-    - "C:\\Program Files"
-    - "C:\\Program Files (x86)"
-    - "C:\\ProgramData"
-    - "C:\\Windows"
-    - "C:\\PerfLogs"
-    - "C:\\opscode"
-    - "C:\\tmp"
-    - "{{ win_temp_dir }}"
+  - "C:\\Users"
+  - "C:\\Program Files"
+  - "C:\\Program Files (x86)"
+  - "C:\\ProgramData"
+  - "C:\\Windows"
+  - "C:\\PerfLogs"
+  - "C:\\opscode"
+  - "C:\\tmp"
+  - "{{ win_temp_dir }}"
 win_testing_applocker_bypasschecker: true
 ansible_become_password: "_Password_CI_CD_to_be_revoked1_"

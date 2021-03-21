@@ -2,7 +2,7 @@
 language: python
 python: "2.7"
 before_install:
- - ln -s ansible-win-applocker ../juju4.win-applocker
+  - ln -s ansible-win-applocker ../juju4.win-applocker
 install:
   - sudo apt-get install libxml2-utils
   - pip install ansible ansible-lint
@@ -14,8 +14,8 @@ script:
 
   - "ansible-lint tasks/main.yml || true"
 
-# Check the role/playbook's syntax.
+  # Check the role/playbook's syntax.
   - "ansible-playbook -i inventory --syntax-check test/integration/default/default.yml"
 
-# Applocker templates
+  # Applocker templates
   - "for f in templates/applocker-*.xml.j2; do echo \"== $f\"; xmllint $f > /dev/null; done"

@@ -25,7 +25,7 @@
         s: absent,
         i: 'ContainerInherit, ObjectInherit',
         pr: 'None'
-      }
+    }
     - { p: "{{ win_log_dir }}",
         u: 'BUILTIN\Users',
         r: 'ReadAndExecute,Write',
@@ -33,7 +33,7 @@
         s: absent,
         i: 'ContainerInherit, ObjectInherit',
         pr: 'None'
-      }
+    }
 
 - include_tasks: windows-whitelist.yml
   when: win_applocker_enable|bool

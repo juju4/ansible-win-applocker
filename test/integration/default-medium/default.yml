@@ -5,17 +5,17 @@
   vars:
     - win_applocker_policy: "applocker-medium.xml"
     - win_testing_applocker: true
-# Note: limiting number of dir to test because of appveyor 1h build limit. why so slow???
+    # Note: limiting number of dir to test because of appveyor 1h build limit. why so slow???
     - win_testing_applocker_dirpath:
-#        - "C:\\Users"
+        # - "C:\\Users"
         - "C:\\Program Files"
-#        - "C:\\Program Files (x86)"
+        # - "C:\\Program Files (x86)"
         - "C:\\ProgramData"
-#        - "C:\\Windows"
-#        - "C:\\PerfLogs"
-#        - "C:\\opscode"
-#        - "C:\\tmp"
-#        - "{{ win_temp_dir }}"
+        # - "C:\\Windows"
+        # - "C:\\PerfLogs"
+        # - "C:\\opscode"
+        # - "C:\\tmp"
+        # - "{{ win_temp_dir }}"
     - win_testing_applocker_bypasschecker: false
   roles:
     - juju4.win-applocker

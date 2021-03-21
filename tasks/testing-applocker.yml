@@ -4,7 +4,8 @@
   win_shell: "Get-AppLockerPolicy -Effective | Test-AppLockerPolicy -Path {{ item }}"
   with_items: "{{ win_testing_applocker_filepath | default([]) }}"
   register: testal_results
-- debug: var=testal_results
+- name: Debug | testal_results
+  debug: var=testal_results
 
 - name: Ensure sysinternals tools are present with chocolatey
   win_chocolatey:
@@ -16,7 +17,8 @@
   with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
   register: wpath_results
   ignore_errors: true
-- debug: var=wpath_results
+- name: Debug | wpath_results
+  debug: var=wpath_results
 
 - name: Remove user _test
   win_user:
@@ -46,20 +48,21 @@
       become_user: _test
       with_items: "{{ win_testing_applocker_dirpath | default([]) }}"
       register: bypass_results
-    - debug: var=bypass_results
+    - name: Debug | bypass_results
+      debug: var=bypass_results
   when: win_testing_applocker_bypasschecker
 
 # https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/
-#- name: install teamviewer for some testing
-#  win_chocolatey: name=teamviewer state=present upgrade=no
+# - name: install teamviewer for some testing
+#   win_chocolatey: name=teamviewer state=present upgrade=no
 # FIXME! out-file: The given's path format is not supported
-#- name: try to push bginfo in teamviewer logfile alternate data stream
-#  win_shell: >
-#    type c:\\ProgramData\\chocolatey\\bin\\bginfo.exe
-#      > "C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"
-#- name: try to execute
-#  win_shell: >
-#    wmic process call create '"C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"'
+# - name: try to push bginfo in teamviewer logfile alternate data stream
+#   win_shell: >
+#     type c:\\ProgramData\\chocolatey\\bin\\bginfo.exe
+#       > "C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"
+# - name: try to execute
+#   win_shell: >
+#     wmic process call create '"C:\\program files (x86)\\Teamviewer\\TeamViewer13_Logfile.log:bginfo.exe"'
 
 # https://github.com/strictlymike/Invoke-SchmappLocker/blob/master/Invoke-SchmappLocker.ps1
 # https://blog.didierstevens.com/2011/01/25/circumventing-srp-and-applocker-to-create-a-new-process-by-design/
@@ -70,4 +73,5 @@
   register: winevt
   ignore_errors: true
   changed_when: false
-- debug: var=winevt.stdout_lines
+- name: Debug | winevt output
+  debug: var=winevt.stdout_lines

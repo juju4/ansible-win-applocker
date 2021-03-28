@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SiPolicy xmlns="urn:schemas-microsoft-com:sipolicy">
+  <VersionEx>10.0.0.0</VersionEx>
+  <PolicyTypeID>{A244370E-44C9-4C06-B551-F6016E563076}</PolicyTypeID>
+  <PlatformID>{2E07F7E4-194C-4D20-B7C9-6F44A6C5A234}</PlatformID>
+  <Rules>
+    <Rule>
+      <Option>Enabled:Unsigned System Integrity Policy</Option>
+    </Rule>
+    <Rule>
+      <Option>Enabled:Audit Mode</Option>
+    </Rule>
+    <Rule>
+      <Option>Enabled:Advanced Boot Options Menu</Option>
+    </Rule>
+    <Rule>
+      <Option>Required:WHQL</Option>
+    </Rule>
+    <Rule>
+      <Option>Required:EV Signers</Option>
+    </Rule>
+    <Rule>
+      <Option>Enabled:Update Policy No Reboot</Option>
+    </Rule>
+  </Rules>
+
+  <!--EKUS-->
+  <EKUs>
+    <EKU ID="ID_EKU_WINDOWS" Value="010A2B0601040182370A0306" />
+    <EKU ID="ID_EKU_ELAM"    Value="010A2B0601040182373D0401" />
+    <EKU ID="ID_EKU_HAL_EXT" Value="010a2b0601040182373d0501" />
+  </EKUs>
+  
+  <!--Signers-->
+  <Signers>
+    <Signer ID="ID_SIGNER_WINDOWS_PRODUCTION" Name="Microsoft Product Root 2010 Windows EKU">
+      <CertRoot Type="Wellknown" Value="06" />
+      <CertEKU ID="ID_EKU_WINDOWS" />
+    </Signer>
+    <Signer ID="ID_SIGNER_ELAM_PRODUCTION" Name="Microsoft Product Root 2010 ELAM EKU">
+      <CertRoot Type="Wellknown" Value="06" />
+      <CertEKU ID="ID_EKU_ELAM" />
+    </Signer>
+    <Signer ID="ID_SIGNER_HAL_PRODUCTION" Name="Microsoft Product Root 2010 HAL EKU">
+      <CertRoot Type="Wellknown" Value="06" />
+      <CertEKU ID="ID_EKU_HAL_EXT" />
+    </Signer>
+  </Signers>
+  
+  <SigningScenarios>
+    <!--Kernel Mode Signing Scenario-->
+    <SigningScenario Value="131" ID="ID_SIGNINGSCENARIO_KMCI" FriendlyName="Kernel Mode Signing Scenario">
+      <ProductSigners>
+        <AllowedSigners>
+          <AllowedSigner SignerId="ID_SIGNER_WINDOWS_PRODUCTION" />
+          <AllowedSigner SignerId="ID_SIGNER_ELAM_PRODUCTION" />
+          <AllowedSigner SignerId="ID_SIGNER_HAL_PRODUCTION" />
+        </AllowedSigners>
+      </ProductSigners>
+    </SigningScenario>
+    
+    <!--User Mode Signing Scenario-->
+    <SigningScenario Value="12" ID="ID_SIGNINGSCENARIO_UMCI" FriendlyName="User Mode Signing Scenario">
+      <ProductSigners />
+    </SigningScenario>
+  </SigningScenarios>
+  <UpdatePolicySigners>
+  </UpdatePolicySigners>
+
+  <CiSigners />
+
+  <HvciOptions>0</HvciOptions>
+  <Settings>
+    <Setting Provider="PolicyInfo" Key="Information" ValueName="Name">
+      <Value>
+        <String>DefaultWindowsAudit</String>
+      </Value>
+    </Setting>
+    <Setting Provider="PolicyInfo" Key="Information" ValueName="Id">
+      <Value>
+        <String>031017</String>
+      </Value>
+    </Setting>
+  </Settings>
+</SiPolicy>

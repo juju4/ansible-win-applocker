@@ -5,6 +5,12 @@ win_log_dir: 'c:\ProgramData\ansible\log'
 
 win_applocker_enable: true
 win_applocker_policy: "applocker-basic.xml"
+win_applocker_templates_upload:
+  - applocker-basic.xml
+  - applocker-medium.xml
+  - ms-block.xml
+  - ms-driver-block.xml
+  - Non_Microsoft_Driver_Load_Audit.xml
 # https://docs.microsoft.com/en-us/windows/security/threat-protection/applocker/understand-applocker-enforcement-settings
 # Not configured:   By default, enforcement is not configured in a rule collection. If rules are present in the corresponding rule collection, they are enforced. If rule enforcement is configured in a higher-level linked Group Policy object (GPO), that enforcement value overrides the Not configured value.
 # Enforce rules:    Rules are enforced for the rule collection, and all rule events are audited.

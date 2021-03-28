@@ -3,10 +3,11 @@
 ## C:\WINDOWS\assembly\GAC_MSIL\System.Management.Automation
 ## C:\WINDOWS\assembly\NativeImages_v2.0.50727_64 or v2.0.*
 
-- name: upload applocker policy
+- name: upload applocker policies
   win_template:
-    src: "{{ win_applocker_policy }}.j2"
-    dest: "{{ win_temp_dir }}\\{{ win_applocker_policy }}"
+    src: "{{ item }}.j2"
+    dest: "{{ win_temp_dir }}\\{{ item }}"
+  with_items: "{{ win_applocker_templates_upload }}"
 
 - name: Configure Applocker policy
   win_shell: "Set-AppLockerPolicy -XMLPolicy \"{{ win_temp_dir }}\\{{ win_applocker_policy }}\""

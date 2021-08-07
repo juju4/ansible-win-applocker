@@ -103,4 +103,3 @@ Invoke-CimMethod -Namespace root/microsoft/Windows/CI -ClassName PS_UpdateAndCom
 ## License
 
 BSD 2-clause
-

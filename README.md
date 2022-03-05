@@ -1,5 +1,5 @@
-[![Appveyor - master](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/master?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-osquery/branch/master)
-[![Appveyor - devel](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/devel?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-osquery/branch/devel)
+[![Appveyor - master](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/master?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-applocker/branch/master)
+[![Appveyor - devel](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/devel?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-applocker/branch/devel)
 
 # Windows AppLocker ansible role
 

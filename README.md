@@ -1,5 +1,5 @@
-[![Appveyor - Master](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-applocker)
-![Appveyor - Devel](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/devel?svg=true)
+[![Appveyor - master](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/master?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-osquery/branch/master)
+[![Appveyor - devel](https://ci.appveyor.com/api/projects/status/fajn5w2f4v52lfyj/branch/devel?svg=true)](https://ci.appveyor.com/project/juju4/ansible-win-osquery/branch/devel)
 
 # Windows AppLocker ansible role
 
@@ -11,7 +11,9 @@ Ansible role to setup AppLocker (application whitelisting) on windows system.
 It was tested on the following versions:
  * 2.3 (Not working! [ansible#23940](https://github.com/ansible/ansible/issues/23940) = template upload failing)
  * 2.4
- * 2.5b2
+ * 2.5
+ * 4.10.0
+ * 5.3.0
 
 ### Operating systems
 
@@ -25,7 +27,7 @@ For example
 ```
 - host: all
   roles:
-    - juju4.win-applocker
+    - juju4.win_applocker
 ```
 
 Run
@@ -43,7 +45,7 @@ See defaults/main.yml for full scope
 This role has a travis basic test (for github, syntax check only), Appveyor test and a Vagrantfile (test/vagrant).
 
 ```
-$ cd /path/to/roles/juju4.win-applocker/test/vagrant
+$ cd /path/to/roles/juju4.win_applocker/test/vagrant
 $ vagrant up
 $ vagrant provision
 $ vagrant destroy

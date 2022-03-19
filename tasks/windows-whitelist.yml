@@ -17,7 +17,7 @@
   register: policy
   changed_when: false
 - name: Debug | policy
-  debug: var=policy.stdout_lines
+  ansible.builtin.debug: var=policy.stdout_lines
 
 - name: Non-domain | check if scheduled task to start AppIdSvc
   win_shell: schtasks /query /tn "AppIdSvc-start"

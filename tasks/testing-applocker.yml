@@ -41,7 +41,8 @@
     dest: "{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1"
 
 ## FIXME! ProgramData dir is user writeable! opscode\inspec
-- block:
+- name: Test AppLockerBypassChecker-v1
+  block:
     - name: AppLockerBypassChecker-v1 for user?
       win_shell: "Powershell -Exec Bypass -File \"{{ win_temp_dir }}\\AppLockerBypassChecker-v1.ps1\" \"{{ item }}\""
       become: yes

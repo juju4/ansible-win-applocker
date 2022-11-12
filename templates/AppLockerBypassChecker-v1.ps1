@@ -2,7 +2,7 @@
 # AppLocker Bypass Checker (Default Rules) v1.0
 #
 # One of the Default Rules in AppLocker allows everything in the folder C:\Windows to be executed.
-# A normal user shouln't have write permission in that folder, but that is not always the case.
+# A normal user shouldn't have write permission in that folder, but that is not always the case.
 # This script tries to copy an executable to every folder in Windows and (if the copy succeeds)
 # it will try to execute it.
 # Read more at https://mssec.wordpress.com/2015/10/22/applocker-bypass-checker/

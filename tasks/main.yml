@@ -1,7 +1,7 @@
 ---
 
 - name: Ensure ansible directories exist
-  win_file:
+  ansible.windows.win_file:
     path: "{{ item }}"
     state: directory
   with_items:
@@ -9,7 +9,7 @@
     - "{{ win_log_dir }}"
 
 - name: Restrict permissions for ansible directories
-  win_acl:
+  ansible.windows.win_acl:
     path: "{{ item.p }}"
     user: "{{ item.u }}"
     rights: "{{ item.r }}"
@@ -35,8 +35,10 @@
         pr: 'None'
     }
 
-- include_tasks: windows-whitelist.yml
+- name: Include windows-whitelist
+  ansible.builtin.include_tasks: windows-whitelist.yml
   when: win_applocker_enable|bool
 
-- include_tasks: testing-applocker.yml
+- name: Include testing-applocker
+  ansible.builtin.include_tasks: testing-applocker.yml
   when: win_testing_applocker|bool

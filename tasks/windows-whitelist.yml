@@ -3,24 +3,25 @@
 ## C:\WINDOWS\assembly\GAC_MSIL\System.Management.Automation
 ## C:\WINDOWS\assembly\NativeImages_v2.0.50727_64 or v2.0.*
 
-- name: upload applocker policies
-  win_template:
+- name: Upload applocker policies
+  ansible.windows.win_template:
     src: "{{ item }}.j2"
     dest: "{{ win_temp_dir }}\\{{ item }}"
   with_items: "{{ win_applocker_templates_upload }}"
 
 - name: Configure Applocker policy
-  win_shell: "Set-AppLockerPolicy -XMLPolicy \"{{ win_temp_dir }}\\{{ win_applocker_policy }}\""
+  ansible.windows.win_shell: "Set-AppLockerPolicy -XMLPolicy \"{{ win_temp_dir }}\\{{ win_applocker_policy }}\""
 
 - name: Check current Applocker policy
-  win_shell: Get-AppLockerPolicy -Local -Xml
+  ansible.windows.win_shell: Get-AppLockerPolicy -Local -Xml
   register: policy
   changed_when: false
 - name: Debug | policy
-  ansible.builtin.debug: var=policy.stdout_lines
+  ansible.builtin.debug:
+    var: policy.stdout_lines
 
 - name: Non-domain | check if scheduled task to start AppIdSvc
-  win_shell: schtasks /query /tn "AppIdSvc-start"
+  ansible.windows.win_shell: schtasks /query /tn "AppIdSvc-start"
   changed_when: false
   register: schtask1
   failed_when: '"ERROR: The system cannot find the file specified." in schtask1.stdout'
@@ -29,10 +30,10 @@
 
 ## win_scheduled_task does not support onstart option
 - name: Non-domain | ensure Application Identity service started at boot with scheduled task
-  win_shell: schtasks /create /tn "AppIdSvc-start" /tr "sc start AppIdSvc" /sc onstart /RU SYSTEM
+  ansible.windows.win_shell: schtasks /create /tn "AppIdSvc-start" /tr "sc start AppIdSvc" /sc onstart /RU SYSTEM
   when: schtask1.failed and not win_insidedomain
 
 - name: Ensure Application Identity service started
-  win_service:
+  ansible.windows.win_service:
     name: AppIdSvc
     state: started

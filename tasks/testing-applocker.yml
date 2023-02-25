@@ -9,7 +9,7 @@
     var: testal_results
 
 - name: Ensure sysinternals tools are present with chocolatey
-  ansible.windows.win_chocolatey:
+  chocolatey.chocolatey.win_chocolatey:
     name: sysinternals
     state: present
 
@@ -58,7 +58,10 @@
 
 # https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/
 # - name: install teamviewer for some testing
-#   ansible.windows.win_chocolatey: name=teamviewer state=present upgrade=no
+#   chocolatey.chocolatey.win_chocolatey:
+#     name: teamviewer
+#     state: present
+#     upgrade: no
 # FIXME! out-file: The given's path format is not supported
 # - name: try to push bginfo in teamviewer logfile alternate data stream
 #   ansible.windows.win_shell: >

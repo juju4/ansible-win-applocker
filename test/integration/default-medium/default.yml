@@ -2,7 +2,7 @@
 
 - name: Test play
   hosts: all
-  become_method: runas
+  become_method: ansible.builtin.runas
   vars:
     win_applocker_policy: "applocker-medium.xml"
     win_testing_applocker: true

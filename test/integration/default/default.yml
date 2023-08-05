@@ -2,7 +2,7 @@
 
 - name: Test play
   hosts: all
-  become_method: runas
+  become_method: ansible.builtin.runas
   vars:
     win_testing_applocker: true
     # Note: limiting number of dir to test because of appveyor 1h build limit. why so slow???
